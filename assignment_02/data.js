@@ -1,4 +1,5 @@
-[
+
+var json=`[
   {
     "name": "Milton",
     "breed": "American Bulldog cross",
@@ -749,4 +750,6 @@
     "pic2": "https://random.dog/20ce0116-cd55-4370-a728-ed6f37fc6c4b.jpg",
     "pic3": "https://random.dog/21060-3302-20249.jpg"
   }
-]
+]`;
+
+  let data=JSON.parse(json);

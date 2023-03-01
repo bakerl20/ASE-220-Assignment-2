@@ -30,16 +30,14 @@
         }
       }
     </style>
-
-    
   </head>
+
   <body>
     
 <header>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
         <strong>Pet adoption website</strong>
-      </a>
     </div>
   </div>
 </header>
@@ -47,26 +45,16 @@
 <main>
   <div class="album py-5 bg-light">
     <div class="container">
-	<h1>Pet name</h1>
-	<div>Pet info goes here</div>
-	<hr />
-	<h2>Image Gallery</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          </div>
-        </div>
+	<h1>
+  </h1>
+	<div></div>
+	
+	<h2></h2>
+   <a role="button" class =" btn btn-outline-primary" id="backButton">Back</a>
+      <div class="row">
+        <br>
+        <br>
+    <div id ="myData"></div>
       </div>
     </div>
   </div>
@@ -82,11 +70,66 @@
 </footer>
 
 
-    <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="assets/js/getAllURLParams.js"></script>
+<script src="assets/js/getAllURLParams.js"></script>
+    <script src="data.js"></script>
+    <script>
+      function capFirst(key){
+        key = key.replace(/[A-Z]/g, " $&").trim();
+        return key.charAt(0).toUpperCase() + key.slice(1);
+      }
+
+
+      var linkButton = document.getElementById("backButton");
+      linkButton.href = "index.html?page=" + Math.floor(getAllUrlParams().pet / 6) + 1;
+      myData.innerHTML+=`
+      <h1>
+        My name is ${data[getAllUrlParams().pet].name}!
+      </h1>
+      <p>`;
+
+     var objectPet = data[getAllUrlParams().pet];
+      for (var key in objectPet)
+      {
+        if (key != "pic1" && key != "pic2" && key != "pic3" )
+        {
+          myData.innerHTML += `${capFirst(key)}: ${objectPet[key]} <br>`;
+        }
+      }
+     
+	    myData.innerHTML+=`</p>
+      <hr />
+	    <h3>Image Gallery</h3>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+          <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <rect width="100%" height="100%" fill="#55595c"/>
+              <image xlink:href="${data[getAllUrlParams().pet].pic1}" x="0" y="0" width="100%" height="100%"/>
+            </svg>
+          </div>
+          <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <rect width="100%" height="100%" fill="#55595c"/>
+              <image xlink:href="${data[getAllUrlParams().pet].pic2}" x="0" y="0" width="100%" height="100%"/>
+            </svg>
+            <div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <rect width="100%" height="100%" fill="#55595c"/>
+              <image xlink:href="${data[getAllUrlParams().pet].pic3}" x="0" y="0" width="100%" height="100%"/>
+            </svg>
+          </div>
+          </div>
+        </div>
+        </div>`;
+    </script>
+    
+
 	<script>
-	console.log(getAllUrlParams().pet);
+	console.log();
 	</script>
       
   </body>
