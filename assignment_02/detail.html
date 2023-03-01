@@ -82,7 +82,7 @@
 
 
       var linkButton = document.getElementById("backButton");
-      linkButton.href = "index.html?page=" + Math.floor(getAllUrlParams().pet / 6) + 1;
+      linkButton.href = "index.html?page=" + (Math.floor(getAllUrlParams().pet / 6) + 1);
       myData.innerHTML+=`
       <h1>
         My name is ${data[getAllUrlParams().pet].name}!
